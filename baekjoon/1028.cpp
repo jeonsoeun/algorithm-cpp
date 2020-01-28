@@ -1,8 +1,8 @@
 #include<iostream>
 using namespace std;
-int find_diamond(char**mine, /*ÇöÀç Çà*/int c_r, /*ÇöÀç ¿­*/int c_c, int r, int c);
+int find_diamond(char**mine, /*í˜„ìž¬ í–‰*/int c_r, /*í˜„ìž¬ ì—´*/int c_c, int r, int c);
 int main(){
-	int r, c;//°¡·Î ¼¼·Î
+	int r, c;//ê°€ë¡œ ì„¸ë¡œ
 	cin >> r;
 	cin >> c;
 
@@ -56,16 +56,16 @@ int main(){
 
 }
 
-int find_diamond(char**mine, /*ÇöÀç Çà*/int c_r, /*ÇöÀç ¿­*/int c_c, int r, int c)
+int find_diamond(char**mine, /*í˜„ìž¬ í–‰*/int c_r, /*í˜„ìž¬ ì—´*/int c_c, int r, int c)
 {
-	int max_size=0; //ÇÑ Á¡¿¡¼­ ¸¸µé¼ö ÀÕ´Â °¡Àå Å« ´ÙÀÌ¾Æ¸óµå.
-	int n=0; //´ÙÀÌ¾Æ¸óµå ³ôÀÌ º¯¼ö
-	for (int i = r+1 ; i > c_r; i--) //Å« ¸¶¸§¸ðºÎÅÍ Ã£´Â´Ù.
+	int max_size=0; //í•œ ì ì—ì„œ ë§Œë“¤ìˆ˜ ìž‡ëŠ” ê°€ìž¥ í° ë‹¤ì´ì•„ëª¬ë“œ.
+	int n=0; //ë‹¤ì´ì•„ëª¬ë“œ ë†’ì´ ë³€ìˆ˜
+	for (int i = r+1 ; i > c_r; i--) //í° ë§ˆë¦„ëª¨ë¶€í„° ì°¾ëŠ”ë‹¤.
 	{
 		n = i - c_r + 1;
-		if (mine[i][c_c] == '1' && n % 2 == 1 && i>max_size) //¸¶¸§¸ð ¹Ý´ëÂÊ ²ÀÁöÁ¡ÀÌ 1ÀÎÁö, Áö±Ý±îÁö Ã£Àº ¸¶¸§¸ðº¸´Ù Å¬ °¡´É¼ºÀÌ ÀÕ´ÂÁö.
+		if (mine[i][c_c] == '1' && n % 2 == 1 && i>max_size) //ë§ˆë¦„ëª¨ ë°˜ëŒ€ìª½ ê¼­ì§€ì ì´ 1ì¸ì§€, ì§€ê¸ˆê¹Œì§€ ì°¾ì€ ë§ˆë¦„ëª¨ë³´ë‹¤ í´ ê°€ëŠ¥ì„±ì´ ìž‡ëŠ”ì§€.
 		{
-			if (c_c - n / 2 > 0 && c_c + n / 2 <= c+1) //±× ³ôÀÌ nÂ¥¸® ¸¶¸§¸ð°¡ Á¸ÀçÇÒ ¼ö ÀÖ´ÂÁö.
+			if (c_c - n / 2 > 0 && c_c + n / 2 <= c+1) //ê·¸ ë†’ì´ nì§œë¦¬ ë§ˆë¦„ëª¨ê°€ ì¡´ìž¬í•  ìˆ˜ ìžˆëŠ”ì§€.
 			{
 				for (int j = 1; j < n; j++)
 				{
