@@ -1,3 +1,8 @@
+/******************************************************************************
+
+
+*******************************************************************************/
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -9,21 +14,23 @@ bool solution(vector<string> phone_book) {
     bool answer = true;
     map<string, int> numMap;
     for(string p: phone_book){
-        for(map<string,int>::iterator m : numMap){
-            if(p.length() > m->first.length()){
-                for(int i = 1 ;i<=p.length(); i++){
-                    string cutStr = p.substr(0, i);
-                    if(m->first == cutStr){
-                        answer = false;
-                        return answer;
-                    }
-                    
-                }
+        for(map<string,int>::iterator m = numMap.begin(); m != numMap.end(); m++){
+            int minLength = 0;
+            if(p.length() < (m->first).length()){
+                minLength = p.length();
+            }else{
+                minLength = (m->first).length();
+            }
+            string cutStr = p.substr(0, minLength);
+            string cutStr2 = (m->first).substr(0,minLength);
+            if(cutStr2 == cutStr){
+                cout<< cutStr << " "<< cutStr2 << endl;
+                answer = false;
+                return answer;
             }
         }
+    numMap[p] = 1;
     }
-        numMap[p] = 1;
-
     return answer;
 }
 
@@ -31,9 +38,7 @@ int main()
 {
     
     
-    string pb1[] = {"02", "1919", "049328"};
-    string pb2[] = {"02", "1919", "049328", "02345"};
-    string pb3[] = {"02", "1919", "049328", "191942"};
+    string pb1[] = { "1919", "049328", "0243","02"};
 
     vector<string> phone_book;
     
